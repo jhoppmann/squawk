@@ -96,4 +96,22 @@ public class StringUtils {
 	public static boolean isFuzzyMatch(String first, String second, int threshold) {
 		return calculateLevenshteinDistance(first, second) <= threshold;
 	}
+
+	/**
+	 * Takes a text and makes the first letter of each word uppercase, the rest lowercase. A word is
+	 * a string of characters preceeded by a whitespace character (e. g. a space).
+	 *
+	 * @param original The text to transform
+	 * @return The original text with first letters to uppercase and the rest lowercase
+	 */
+	public static String firstLettersToUppercase(String original) {
+		String result = "";
+		String[] words = original.split("\\s");
+		for (String word : words) {
+			result += word.substring(0, 1).toUpperCase() + word.substring(1).toLowerCase() + " ";
+		}
+		result = result.substring(0, result.length() - 1);
+
+		return result;
+	}
 }
